@@ -5,6 +5,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "${applicationId}-${variant.versionName}.apk"
+        }
+    }
     signingConfigs {
         config {
             keyAlias 'SDLGKey'
@@ -18,8 +23,8 @@ android {
         applicationId "lab.gurriton.sdlg"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 210000001
-        versionName "0.0.1"
+        versionCode 210000002
+        versionName "0.0.2"
         manifestPlaceholders = [ROTATION: "portrait"]
     }
     buildTypes {
